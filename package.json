@@ -1,0 +1,1 @@
+{"private":true,"type":"module","scripts":{"test":"node --test metrics.test.js","serve":"node server.js"}}

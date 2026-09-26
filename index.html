@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1012">
+  <title>Pool Signal — Solana market data, with its gaps visible</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Pool Signal home"><span class="brand-mark">◉</span><span>POOL <b>SIGNAL</b></span></a>
+      <span class="network"><i></i> SOLANA MAINNET · READ ONLY</span>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow">MARKET OBSERVABILITY / SOLAMI BLUR</div>
+      <h1>Watch the flow.<br><em>See the gaps.</em></h1>
+      <p>Live swaps and liquidity events for one Solana mint. Every number below describes what this browser actually observed—not a claim about the entire market.</p>
+    </section>
+
+    <section class="connect-card" aria-labelledby="connect-title">
+      <div class="connect-heading"><div><h2 id="connect-title">Connect to the live feed</h2><p>Your key is sent directly to Solami from this tab. It is never stored or added to a shareable page URL.</p></div><div id="status" class="status idle" role="status"><span class="status-dot"></span><span id="status-text">DISCONNECTED</span></div></div>
+      <form id="connect-form" autocomplete="off">
+        <label for="mint">Token mint <small>Solana base58 address</small></label>
+        <input id="mint" name="mint" spellcheck="false" value="JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN" required maxlength="44">
+        <label for="key">Solami API key <small>never saved or included in shared URLs</small></label>
+        <div class="key-row"><input id="key" name="key" type="password" spellcheck="false" required placeholder="Paste a Data API key"><button type="submit" id="connect-button">Connect live <span>↗</span></button></div>
+      </form>
+      <div class="connect-footer"><span id="coverage">No observation window yet.</span><span><button id="record-button" class="text-button" type="button" hidden>Record 2-minute live demo</button><button id="disconnect-button" class="text-button" type="button" hidden>Disconnect</button></span></div>
+    </section>
+
+    <section class="dashboard" aria-label="Live market dashboard">
+      <div class="section-title"><div><span class="eyebrow">01 / LIVE WINDOW</span><h2>What reached this tab</h2></div><div class="window-pill">ROLLING 5 MIN <span>·</span> OBSERVED EVENTS</div></div>
+      <div class="stats-grid">
+        <article class="stat"><span>SWAP VOLUME</span><strong id="volume">—</strong><small>USD · observed</small></article>
+        <article class="stat"><span>BUY / SELL</span><strong id="ratio">—</strong><small>USD volume ratio</small></article>
+        <article class="stat"><span>SWAPS</span><strong id="swaps">—</strong><small>unique events seen</small></article>
+        <article class="stat warning-stat"><span>LIQUIDITY REMOVALS</span><strong id="removals">—</strong><small>events seen · inspect context</small></article>
+      </div>
+      <div class="two-col">
+        <article class="panel chart-panel"><div class="panel-head"><div><span class="eyebrow">PRICE TRACE</span><h3>Observed swap prices</h3></div><span id="last-price">—</span></div><svg id="price-chart" viewBox="0 0 600 190" preserveAspectRatio="none" role="img" aria-label="Prices from swaps observed in this browser"><line x1="0" y1="188" x2="600" y2="188" stroke="#27383b"/><polyline id="price-line" fill="none" stroke="#b8fa62" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" points=""/></svg><p id="chart-note" class="muted">Waiting for live swaps. No price is inferred when the feed is silent.</p></article>
+        <article class="panel integrity-panel"><span class="eyebrow">FEED INTEGRITY</span><h3>Know what you missed</h3><div class="integrity-row"><span>Last event</span><strong id="last-event">—</strong></div><div class="integrity-row"><span>Connection gaps</span><strong id="gaps">0</strong></div><div class="integrity-row"><span>Distinct events this session</span><strong id="total">0</strong></div><div class="integrity-callout" id="integrity-callout">Not connected. A blank chart is not evidence of no trading.</div></article>
+      </div>
+      <div class="section-title stream-title"><div><span class="eyebrow">02 / SOURCE EVENTS</span><h2>Evidence stream</h2></div><span class="window-pill">LATEST 30</span></div>
+      <div class="stream-head"><span>TIME / TYPE</span><span>DETAIL</span><span>ON CHAIN</span></div>
+      <div id="events" class="events" aria-live="polite"><div class="empty">Connect to see signed mainnet events here.</div></div>
+    </section>
+
+    <footer><span>POOL SIGNAL <span class="footer-muted">· a Solami data experiment</span></span><p>Read-only telemetry. Liquidity changes and buy pressure are observations, not investment advice or a safety score. <a href="https://solami.dev/docs/blur" target="_blank" rel="noopener noreferrer">Data documentation ↗</a></p></footer>
+  </main>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
