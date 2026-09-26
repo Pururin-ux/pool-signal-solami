@@ -4,6 +4,8 @@ A read-only, live Solana market dashboard powered by [Solami Blur](https://solam
 
 The central design choice is **visible uncertainty**: a silent or interrupted feed does not imply a silent market. Metrics describe events this browser received, not an authoritative historical index.
 
+**[Open the live app](https://pururin-ux.github.io/pool-signal-solami/)** · **[Watch the 125-second mainnet demo](pool-signal-live-mainnet-demo.webm)**
+
 ## Run
 
 Requirements: a modern browser and a [Solami](https://solami.dev/) API key with the `DataApi` permission. The Data API permission must be assigned to the key through a role; a key with “No roles” receives HTTP 403 on Blur even if it can use RPC.
